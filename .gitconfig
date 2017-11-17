@@ -1,0 +1,7 @@
+[user]
+	name = Alexandr Kozlenkov
+	email = sah4ez32@gmail.com
+[core]
+	autocrlf = input
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
