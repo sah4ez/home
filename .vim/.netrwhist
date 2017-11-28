@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/sah4ez/git/edisoft/.git'
+let g:netrw_dirhist_2='/home/sah4ez/edisoft/edi-10775'
+let g:netrw_dirhist_3='/home/sah4ez/git/scheduler-tools'
+let g:netrw_dirhist_4='/home/sah4ez/ronte.io/get_started/group_vars'
+let g:netrw_dirhist_5='/home/sah4ez/ronte.io/git/msg-platoon-docker-compose/work/frontend-parameters/msg-oauth-frontend'
+let g:netrw_dirhist_6='/home/sah4ez/ronte.io/git/msg-platoon-docker-compose/work/frontend-parameters/msg-oauth-frontend/app'
+let g:netrw_dirhist_7='/home/sah4ez/ronte.io/git/msg-platoon-docker-compose/work/frontend-parameters/msg-oauth-frontend/app/config'
+let g:netrw_dirhist_8='/home/sah4ez/ronte.io/git/msg-platoon-docker-compose/frontend-parameters/msg-deferred-message-processor/app/config/parameters.yml'
