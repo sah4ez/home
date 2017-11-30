@@ -11,10 +11,12 @@ syntax on
 colorscheme gruvbox
 set background=dark
 
+filetype plugin indent on
 set number " показывать номера строк в редакторе
 set colorcolumn=120 " вертикальная линия после 120 символов
 set tabstop=4 " ширина табуляции
 set softtabstop=4 " ширина таба при использовании всесто него пробелов
+set shiftwidth=4 "  when indenting with '>', use 4 spaces width
 set expandtab " On pressing tab, insert 4 spaces
 
 :set backspace=indent,eol,start
@@ -53,3 +55,5 @@ let g:go_metalinter_deadline = "5s"
 set updatetime=100
 let g:go_auto_sameids = 1
 autocmd BufRead /home/martin/go/src/*.go :GoGuruScope /home/sah4ez/go/src
+
+let g:polyglot_disabled = ['go']
