@@ -1,2 +1,4 @@
-git/
-go/
+*
+!.bashrc
+!.gitignore
+!.gitconfig
