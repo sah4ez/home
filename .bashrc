@@ -90,6 +90,8 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias kc='kubectl'
+alias dm="docker-machine"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -114,6 +116,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+set -o vi
 
 
 #JDK
@@ -176,3 +180,7 @@ export CODE=0
 export UUID=0
 export USER_ID=0
 export OAUTH_FRONTEND_HOST_AND_PORT=127.0.0.1:8000
+
+if [ $(docker-machine ls -q | grep registry) ]; then
+    export REG_IP=`docker-machine ip registry`
+fi
