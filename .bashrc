@@ -71,6 +71,8 @@ xterm*|rxvt*)
     ;;
 esac
 
+export $(cat private_environment | xargs)
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -92,6 +94,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias kc='kubectl'
 alias dm="docker-machine"
+alias wd="cd $HOME/go/src/bitbucket.org/$COMPANY/"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
