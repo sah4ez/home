@@ -6,7 +6,7 @@
 [url "git@bitbucket.org:"]
 	insteadOf = https://bitbucket.org/
 [merger]
-    tool = vimdiff
+    tool = vimdiff2
 
 [alias]
     # basic {{{
@@ -36,6 +36,10 @@
     ca = commit --amend
     amend = commit --amend
     caa = commit -a --amend -C HEAD
+    commiter = show -s --format="%an" HEAD
+    # }}}
+    # fetch{{{
+    fu = "!f() { git fetch ; git branch | grep \\*| awk '{print $2}' | xargs git pull origin ; }; f"
     # }}}
     # log commands {{{
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
@@ -50,6 +54,7 @@
     # diff {{{
     d = diff --word-diff
     dc = diff --cached
+    dt = difftool --tool=vimdiff2
     # diff last commit
     dlc = diff --cached HEAD^
     dr  = "!f() { git diff -w "$1"^.."$1"; }; f"
@@ -95,6 +100,7 @@
     # conflict/merges
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+    mt = mergetool --tool=vimdiff2
 
     #list remotes
     rem="!git config -l | grep remote.*url | tail -n +2"
