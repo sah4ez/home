@@ -1,1 +1,2 @@
 xrandr --output DP-0 --left-of DVI-I-1
+xrandr --output DVI-I-1 --primary
