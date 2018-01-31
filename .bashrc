@@ -71,7 +71,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-export $(cat private_environment | xargs)
+if [ -f private_environment ]; then export $(cat private_environment | xargs); fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -185,6 +185,4 @@ export UUID=0
 export USER_ID=0
 export OAUTH_FRONTEND_HOST_AND_PORT=127.0.0.1:8000
 
-if [ $(docker-machine ls -q | grep registry) ]; then
-    export REG_IP=`docker-machine ip registry`
-fi
+export PS1='\e[1;95m\t:'$PS1
