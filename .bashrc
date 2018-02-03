@@ -185,4 +185,4 @@ export UUID=0
 export USER_ID=0
 export OAUTH_FRONTEND_HOST_AND_PORT=127.0.0.1:8000
 
-export PS1='\e[1;95m\t:'$PS1
+export PS1="\[\e[1;95m\]\t\[\e[m\]:\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]:\[\e[1;34m\]\w\[\e[m\]\\$ "
