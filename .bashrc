@@ -92,10 +92,6 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias kc='kubectl'
-alias dm="docker-machine"
-alias mk="minikube"
-alias wd="cd $HOME/go/src/bitbucket.org/$COMPANY/"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -176,15 +172,6 @@ pdf (){
 export SDKMAN_DIR="/home/sah4ez/.sdkman"
 [[ -s "/home/sah4ez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sah4ez/.sdkman/bin/sdkman-init.sh"
 
-# DEV SETTINGS
-
-export PHONE_0=012311111
-export ACCESS_TOKEN=1
-export CODE=0
-export UUID=0
-export USER_ID=0
-export OAUTH_FRONTEND_HOST_AND_PORT=127.0.0.1:8000
-
 # get current branch in git repo
 function parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
@@ -233,3 +220,12 @@ function parse_git_dirty {
 }
 
 export PS1="\[\e[1;92m\]\`parse_git_branch\`\[\e[m\]\[\e[1;95m\]\t\[\e[m\]:\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]:\[\e[1;34m\]\w\[\e[m\]\n\\$ "
+
+# DEV SETTINGS
+
+export PHONE_0=012311111
+export ACCESS_TOKEN=1
+export CODE=0
+export UUID=0
+export USER_ID=0
+export OAUTH_FRONTEND_HOST_AND_PORT=127.0.0.1:8000
