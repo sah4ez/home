@@ -23,7 +23,7 @@ set expandtab " On pressing tab, insert 4 spaces
 :let g:go_version_warning = 0
 set autowrite
 
-map <C-b> :NERDTreeFocus<CR>
+" map <C-S-b> :NERDTreeFocus<CR>
 
 autocmd FileType go nmap <leader>n  :cnext<CR>
 autocmd FileType go nmap <leader>m  :cprevious<CR>
