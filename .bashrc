@@ -138,23 +138,10 @@ findprocess(){
   ps aux | grep -i $1
 }
 
-# $1 path to file
-# $2 path for save converted file
-convertUnicodeToUTF(){
-  if [[ -z $2 ]]
-  then
-    cat $1 | native2ascii -encoding UTF-8 -reverse
-  else
-    cat $1 | native2ascii -encoding UTF-8 -reverse > $2
-  fi
-}
-# $1 - path to file
-# $2 - pattern
-findUtdVariable(){
-  LINE=$(grep -n \"$2 $1 | awk '{print $1}' | sed -r 's/://')
-  LINE=$((LINE + 1))
-  P=p
-  cat $1 | sed -n $LINE$P | awk '{print $3}' | sed -r 's/;//'
+decode(){
+    echo "Output:"
+    base64 --decode <<< $1 
+    echo ""
 }
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.6
@@ -164,6 +151,7 @@ export PATH=$PATH:/home/sah4ez/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export LOG_LEVEL=debuglog
+export BUILD_TAGS=debug
 pdf (){
   evince $1
 }
