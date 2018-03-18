@@ -54,6 +54,6 @@ let g:go_metalinter_deadline = "5s"
 
 set updatetime=100
 let g:go_auto_sameids = 1
-autocmd BufRead /home/sah4ez/go/src/*.go :GoGuruScope /home/sah4ez/go/src
+autocmd BufRead /home/sah4ez/go/src/*.go silent :GoGuruScope /home/sah4ez/go/src
 
 let g:polyglot_disabled = ['go']
