@@ -5,4 +5,8 @@
 !.gitconfig
 !.xprofile
 !.inputrc
-!./.vimpkg/
+!.vimpkg/**
+!.vimpkg/bin/**
+!.vimpkg/bundle/**
+!.vimpkg/src/**
+
