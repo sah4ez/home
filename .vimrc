@@ -57,3 +57,5 @@ let g:go_auto_sameids = 1
 autocmd BufRead /home/sah4ez/go/src/*.go silent :GoGuruScope /home/sah4ez/go/src
 
 let g:polyglot_disabled = ['go']
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
