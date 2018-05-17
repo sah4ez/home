@@ -11,6 +11,7 @@ alias branches='for l in $(ls -d msg-* | xargs); do cd $l; printf "%-30s | %-30s
 alias tags='for l in $(ls -d msg-* | xargs); do cd $l; printf "%-30s | %-30s\n" "$l" "$(git tag -l  | tail -n 1 )" ; cd .. ; done'
 alias c='xclip'
 alias v='xclip -o'
+alias chrome='google-chrome --proxy-server="socks5://127.0.0.1:9050"'
 
 alias mongodev="mongo --host ${MONGO_PLT_DEV}"
 alias mongostage="mongo --host ${MONGO_PLT_STG}"
