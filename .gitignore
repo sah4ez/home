@@ -10,3 +10,7 @@
 !.vimpkg/bundle/**
 !.vimpkg/src/**
 !.curlrc
+!.vimrc
+!.vim
+!.vimrc_back
+!.vim_back
