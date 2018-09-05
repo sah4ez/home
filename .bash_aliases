@@ -13,7 +13,7 @@ alias tags='for l in $(ls -d msg-* | xargs); do cd $l; printf "%-30s | %-30s\n" 
 alias c='xclip'
 alias v='xclip -o'
 alias cwd='pwd | xclip'
-alias vwd='cd $(xclip -o)'
+alias vwd='cd $(if [ $(xclip -o | wc -w) -eq 1 ] && [ "$(xclip -o)" ]; then echo $(xclip -o); else echo "empty copied path. tips: use cwd" >> /dev/stderr; fi)'
 alias chrome='google-chrome --proxy-server="socks5://127.0.0.1:9050"'
 
 alias mongodev="mongo --host ${MONGO_PLT_DEV}"
