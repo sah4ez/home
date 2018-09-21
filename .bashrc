@@ -144,8 +144,8 @@ decode(){
     echo ""
 }
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.6
-source /usr/local/bin/virtualenvwrapper.sh
+#export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.6
+#source /usr/local/bin/virtualenvwrapper.sh
 # Go env
 export PATH=$PATH:/home/sah4ez/go/bin
 export GOROOT=/usr/local/go
@@ -155,10 +155,6 @@ export BUILD_TAGS=debug
 pdf (){
   evince $1
 }
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/sah4ez/.sdkman"
-[[ -s "/home/sah4ez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sah4ez/.sdkman/bin/sdkman-init.sh"
 
 # get current branch in git repo
 function parse_git_branch() {
@@ -209,40 +205,6 @@ function parse_git_dirty {
 
 export PS1="\[\e[1;92m\]\`parse_git_branch\`\[\e[m\]\[\e[1;95m\]\t\[\e[m\]:\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]:\[\e[1;34m\]\w\[\e[m\]\n\\$ "
 
-# DEV SETTINGS
-
-export PHONE_0=012311111
-export ACCESS_TOKEN=1
-export CODE=0
-export UUID=0
-export USER_ID=0
-export OAUTH_FRONTEND_HOST_AND_PORT=127.0.0.1:8000
-
-if [ -f $HOME/.gpg-agent-info ]; then
-    . $HOME/.gpg-agent-info
-    export GPG_AGENT_INFO
-fi
-
-if [ ! -f $HOME/.gpg-agent.conf ]; then
-  cat <<EOM >$HOME/.gpg-agent.conf
-default-cache-ttl 604800
-max-cache-ttl 604800
-default-cache-ttl-ssh 604800
-max-cache-ttl-ssh 604800
-EOM
-fi
-
-if [ -n "${GPG_AGENT_INFO}" ]; then
-    nc  -U "${GPG_AGENT_INFO%%:*}" >/dev/null </dev/null
-    if [ ! -S "${GPG_AGENT_INFO%%:*}" -o $? != 0 ]; then
-        # set passphrase cache so I only have to type my passphrase once a day
-        eval $(gpg-agent --options $HOME/.gpg-agent.conf --daemon --write-env-file $HOME/.gpg-agent-info --use-standard-socket --log-file $HOME/tmp/gpg-agent.log --verbose)
-    fi
-fi
-export GPG_TTY=$(tty)
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export LD_LIBRARY_PATH=/usr/local/lib/
