@@ -149,6 +149,7 @@ decode(){
 # Go env
 export PATH=$PATH:/home/sah4ez/go/bin
 export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/go
 export LOG_LEVEL=debuglog
 export BUILD_TAGS=debug
