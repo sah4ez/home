@@ -122,7 +122,7 @@ set -o vi
 
 #JDK
 #export JAVA_HOME="$HOME/.opt/jdk1.8.0_131"
-export JAVA_HOME="$HOME/.opt/jdk"
+export JAVA_HOME="/opt/jdk"
 export PATH=$PATH:$JAVA_HOME/bin
 export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xms1024m -Xmx2048m -XX:PermSize=512m -XX:MaxPermSize=768m"
 export BASEDIR=$HOME
