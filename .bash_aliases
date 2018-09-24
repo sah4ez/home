@@ -15,6 +15,7 @@ alias v='xclip -o'
 alias cwd='pwd | xclip'
 alias vwd='cd $(if [ $(xclip -o | wc -w) -eq 1 ] && [ "$(xclip -o)" ]; then echo $(xclip -o); else echo "empty copied path. tips: use cwd" >> /dev/stderr; fi)'
 alias chrome='google-chrome --proxy-server="socks5://127.0.0.1:9050"'
+alias brightness='xrandr --output eDP-1 --brightness'
 
 alias mongodev="mongo --host ${MONGO_PLT_DEV}"
 alias mongostage="mongo --host ${MONGO_PLT_STG}"
