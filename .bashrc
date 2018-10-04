@@ -209,3 +209,5 @@ export PS1="\[\e[1;92m\]\`parse_git_branch\`\[\e[m\]\[\e[1;95m\]\t\[\e[m\]:\[\e[
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+xrandr --output eDP-1 --brightness $(cat ${HOME}/.i3/brightness)
