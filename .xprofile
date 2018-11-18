@@ -1,2 +1,1 @@
-xrandr --output DP-0 --left-of DVI-I-1
-xrandr --output DVI-I-1 --primary
+/usr/bin/xrandr --output DVI-D-1 --right-of VGA-1
