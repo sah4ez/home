@@ -71,7 +71,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-if [ -f private_environment ]; then export $(cat private_environment | xargs); fi
+if [ -f /home/sah4ez/private_environment ]; then export $(cat /home/sah4ez/private_environment | xargs); fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -124,12 +124,14 @@ set -o vi
 #export JAVA_HOME="$HOME/.opt/jdk1.8.0_131"
 export JAVA_HOME="$HOME/.opt/jdk"
 export PATH=$PATH:$JAVA_HOME/bin
+export PATH=$PATH:/sbin:/usr/sbin
+export PATH=$PATH:/snap/bin
+export PATH=$PATH:$HOME/bin
 export JAVA_OPTS="-Dfile.encoding=UTF-8 -Xms1024m -Xmx2048m -XX:PermSize=512m -XX:MaxPermSize=768m"
 export BASEDIR=$HOME
 
 #MAVEN
-export M2_HOME="$HOME/.opt/maven3.2.5"
-export PATH=$PATH:$M2_HOME/bin
+export M2_HOME="$HOME/.m2"
 
 # MY Scripts
 export PATH=$PATH:$HOME/scripts
@@ -140,14 +142,15 @@ findprocess(){
 
 decode(){
     echo "Output:"
-    base64 --decode <<< $1 
+    echo "$1" | base64 --decode
     echo ""
 }
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.6
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 # Go env
 export PATH=$PATH:/home/sah4ez/go/bin
+export PATH=$PATH:/usr/local/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export LOG_LEVEL=debuglog
@@ -232,13 +235,13 @@ max-cache-ttl-ssh 604800
 EOM
 fi
 
-if [ -n "${GPG_AGENT_INFO}" ]; then
-    nc  -U "${GPG_AGENT_INFO%%:*}" >/dev/null </dev/null
-    if [ ! -S "${GPG_AGENT_INFO%%:*}" -o $? != 0 ]; then
-        # set passphrase cache so I only have to type my passphrase once a day
-        eval $(gpg-agent --options $HOME/.gpg-agent.conf --daemon --write-env-file $HOME/.gpg-agent-info --use-standard-socket --log-file $HOME/tmp/gpg-agent.log --verbose)
-    fi
-fi
+#if [ -n "${GPG_AGENT_INFO}" ]; then
+#    nc  -U "${GPG_AGENT_INFO%%:*}" >/dev/null </dev/null
+#    if [ ! -S "${GPG_AGENT_INFO%%:*}" -o $? != 0 ]; then
+#        # set passphrase cache so I only have to type my passphrase once a day
+#        eval $(gpg-agent --options $HOME/.gpg-agent.conf --daemon --write-env-file $HOME/.gpg-agent-info --use-standard-socket --log-file $HOME/tmp/gpg-agent.log --verbose)
+#    fi
+#fi
 export GPG_TTY=$(tty)
 
 export NVM_DIR="$HOME/.nvm"
@@ -246,3 +249,25 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export LD_LIBRARY_PATH=/usr/local/lib/
+
+export SCALA_HOME=/home/sah4ez/.opt/scala
+export PATH=$PATH:$SCALA_HOME/bin
+export BROWSER="firefox %s"
+export GRADLE_HOME=/home/sah4ez/.opt/gradle
+export PATH=$PATH:$GRADLE_HOME/bin
+
+#if [ -f /tmp/xrandr.lock ]
+#then
+#	dotlockfile -t /tmp/xrandr.lock
+#else
+#	/usr/bin/xrandr --output DVI-D-1 --right-of VGA-1
+#	dotlockfile -l /tmp/xrandr.lock
+#fi
+
+if [ -n "$DISPLAY" ]; then
+	  xset b off
+fi
+
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+	. /opt/local/etc/profile.d/bash_completion.sh
+fi
