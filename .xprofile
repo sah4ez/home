@@ -1,1 +1,1 @@
-/usr/bin/xrandr --output DVI-D-1 --right-of VGA-1
+/usr/bin/xrandr --output HDMI-1 --right-of VGA-1
