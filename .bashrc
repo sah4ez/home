@@ -276,4 +276,4 @@ fi
 export CHTSH_CURL_OPTIONS='-A curl'
 . ~/.bash.d/cht.sh
 
-sources ~/scripts/use-ssh-autocomplete
+source ~/scripts/use-ssh-autocomplete
