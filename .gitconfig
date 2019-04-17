@@ -3,6 +3,8 @@
 	email = sah4ez32@gmail.com
 [core]
 	autocrlf = input
+	sshCommand = "ssh -i /home/sah4ez/.ssh/id_rsa -F /dev/null"
+	excludesfile = "/home/sah4ez/company/.gitignore"
 [url "git@bitbucket.org:"]
 	insteadOf = https://bitbucket.org/
 [merger]
@@ -14,7 +16,7 @@
     s = status 
     su = status -u no
     cl = clone
-    ci = commit
+    ci = commit -t /home/sah4ez/.gitmessage
     co = checkout
     br = branch
     r = reset
