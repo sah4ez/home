@@ -153,6 +153,7 @@ export PATH=$PATH:/home/sah4ez/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
+export GO111MODULE=off
 export LOG_LEVEL=debuglog
 export BUILD_TAGS=debug
 pdf (){
@@ -271,3 +272,8 @@ fi
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
 	. /opt/local/etc/profile.d/bash_completion.sh
 fi
+
+export CHTSH_CURL_OPTIONS='-A curl'
+. ~/.bash.d/cht.sh
+
+sources ~/scripts/use-ssh-autocomplete
