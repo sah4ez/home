@@ -14,7 +14,7 @@
     s = status 
     su = status -u no
     cl = clone
-    ci = commit
+    ci = "!fu() { git commit -t $HOME/.gitmessage; }; fu"
     co = checkout
     br = branch
     r = reset
