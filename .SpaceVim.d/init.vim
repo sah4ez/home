@@ -26,6 +26,8 @@ let g:spacevim_custom_plugins = [
   \ ['c9s/helper.vim'],
   \ ['c9s/treemenu.vim'],
   \ ['c9s/vikube.vim'],
+  \ ['justinmk/vim-sneak'],
+  \ ['tpope/vim-repeat'],
   \ ]
 
 let g:spacevim_filemanager = 'nerdtree'
@@ -189,3 +191,8 @@ autocmd BufReadPre *.{c,cpp,h,java,objc,objcpp} nnoremap <space>grp :LspPrevious
 autocmd BufReadPre *.{c,cpp,h,java,objc,objcpp} nnoremap <space>gR :LspRename<CR>
 autocmd BufReadPre *.{c,cpp,h,java,objc,objcpp} nnoremap <space>gi :LspImplementation<CR>
 autocmd BufReadPre *.{c,cpp,h,java,objc,objcpp} nnoremap <space>gS :LspWorkspaceSymbol<CR>
+
+nmap <space>jF <plug>(easymotion-F)
+nmap <space>jf <plug>(easymotion-f)
+nmap ; <plug>(easymotion-next)
+nmap <space>; <plug>(easymotion-prev)
