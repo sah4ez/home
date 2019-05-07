@@ -277,3 +277,11 @@ export CHTSH_CURL_OPTIONS='-A curl'
 . ~/.bash.d/cht.sh
 
 source ~/scripts/use-ssh-autocomplete
+
+export PATH=$PATH:/opt/kafka/bin
+
+source ~/scripts/git-completion.bash
+export LANG=en_EN
+export REVIEW_BASE=master
+
+mkdir -p /tmp/cquery_cache
