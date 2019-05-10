@@ -196,3 +196,9 @@ nmap <space>jF <plug>(easymotion-F)
 nmap <space>jf <plug>(easymotion-f)
 nmap ; <plug>(easymotion-next)
 nmap <space>; <plug>(easymotion-prev)
+
+if filereadable("./syntax/ws-logs.vim") 
+	source ./syntax/ws-logs.vim
+endif
+
+autocmd BufReadPre *.ws set filetype=ws-logs
