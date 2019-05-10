@@ -1,0 +1,25 @@
+#!/bin/bash
+
+tty_id=$(tty)
+
+dir=$(echo "/tmp/kcns${tty_id}")
+mkdir -p $dir
+
+if [ -f $dir/current ];
+then
+	mv $dir/current $dir/prev
+fi
+
+if [ "$1" == "-" ];
+then
+	mv $dir/prev $dir/current
+	exit 0
+fi
+
+echo "$1" > $dir/current
+
+exist=$(cat ${HOME}/.bash_aliases | grep kcns | wc -l)
+if [ $exist -eq 0 ];
+then
+	echo "alias kc=\"kubectl -n\$(cat /tmp/kcns\$(tty)/current)\" # kcns" >> ${HOME}/.bash_aliases
+fi

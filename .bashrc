@@ -281,7 +281,7 @@ source ~/scripts/use-ssh-autocomplete
 export PATH=$PATH:/opt/kafka/bin
 
 source ~/scripts/git-completion.bash
-export LANG=en_EN
 export REVIEW_BASE=master
 
 mkdir -p /tmp/cquery_cache
+source ~/scripts/kctx.bash

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+base_kubeconfig=${HOME}/.kube/config
+new_context=$1
+
+sed -i '/current-context/d' ${base_kubeconfig}
+
+echo 'current-context: "'$new_context'"' | tee -a ${base_kubeconfig}
