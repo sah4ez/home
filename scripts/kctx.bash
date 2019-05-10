@@ -2,11 +2,11 @@
 
 _kctx()
 {
-	old_context=$(cat ${HOME}/.kube/config | grep current-context | awk -F\" '{print $2}')
+	old_context=$(cat ${HOME}/.kube/config | grep current-context | awk -F:\  '{print $2}' | sed 's/"//g')
 
     local cur
 	_init_completion || return
-	opts=$(cat ${HOME}/.kube/config | yq '.contexts[].name' -r | awk 'ORS=" "' | sed -r "s/${old_context}//g;s/  / /g" )
+	opts=$(cat ~/.kube/config | yq r - contexts[*].name  | sed 's/- //g' | awk 'ORS=" "' | sed -r "s/${old_context}//g;s/  / /g" )
 
     if [[ ${cur} == * ]] ; then
         COMPREPLY=( $(compgen -W "${opts}" ${cur}) )

@@ -3,6 +3,12 @@
 base_kubeconfig=${HOME}/.kube/config
 new_context=$1
 
+if [ "$new_context" == "" ];
+then
+	egrep 'current-context' ${base_kubeconfig}
+	exit 0
+fi
+
 sed -i '/current-context/d' ${base_kubeconfig}
 
 echo 'current-context: "'$new_context'"' | tee -a ${base_kubeconfig}
