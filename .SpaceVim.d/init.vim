@@ -200,5 +200,9 @@ nmap <space>; <plug>(easymotion-prev)
 if filereadable("./syntax/ws-logs.vim") 
 	source ./syntax/ws-logs.vim
 endif
+if filereadable("./syntax/nginx-auth.vim") 
+	source ./syntax/nginx-auth.vim
+endif
 
 autocmd BufReadPre *.ws set filetype=ws-logs
+autocmd BufReadPre *.nginx-log set filetype=nginx-auth
