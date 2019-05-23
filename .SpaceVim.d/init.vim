@@ -28,6 +28,7 @@ let g:spacevim_custom_plugins = [
   \ ['c9s/vikube.vim'],
   \ ['justinmk/vim-sneak'],
   \ ['tpope/vim-repeat'],
+  \ ['lilydjwg/colorizer'],
   \ ]
 
 let g:spacevim_filemanager = 'nerdtree'
@@ -104,8 +105,6 @@ let g:spacevim_default_indent = 4
 let g:spacevim_expand_tab =0
 set expandtab
 
-
-set spell spelllang=en_us
 
 " scala
 " autocmd BufWritePost *.scala silent :EnTypeCheck
@@ -203,6 +202,14 @@ endif
 if filereadable("./syntax/nginx-auth.vim") 
 	source ./syntax/nginx-auth.vim
 endif
+if filereadable("./spell/ru.utf-8.spl")
+	source ./spell/ru.utf-8.spl
+	source ./spell/ru.utf-8.sug
+endif
 
 autocmd BufReadPre *.ws set filetype=ws-logs
 autocmd BufReadPre *.nginx-log set filetype=nginx-auth
+autocmd BufReadPre *.ios set filetype=ios
+
+set spell spelllang=en_us
+nmap <space>ll :set spell spelllang=en_us,ru<CR>
