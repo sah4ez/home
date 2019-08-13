@@ -59,6 +59,7 @@ autocmd VimEnter * nested :set wrap
 let g:spacevim_windows_smartclose = 'Q'
 
 let g:go_def_mode='gopls'
+" let g:go_info_mode='gopls'
 " golang
 " let g:go_guru_scope = ["..."]
 let g:go_highlight_functions = 1
@@ -77,7 +78,7 @@ let g:go_auto_type_info = 1
 
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'structcheck', 'maligned', 'megacheck', 'dupl', 'interfacer', 'goconst']
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['golint']
+"let g:go_metalinter_autosave_enabled = ['golint']
 let g:go_metalinter_deadline = "5s"
 
 let g:go_auto_sameids = 1
@@ -210,6 +211,9 @@ endif
 autocmd BufReadPre *.ws set filetype=ws-logs
 autocmd BufReadPre *.nginx-log set filetype=nginx-auth
 autocmd BufReadPre *.ios set filetype=ios
+
+" fucking hack, but I don't know why it not wokred
+autocmd BufWritePost *.go silent set filetype=none | set filetype=go
 
 set spell spelllang=en_us
 nmap <space>ll :set spell spelllang=en_us,ru<CR>

@@ -285,3 +285,6 @@ export REVIEW_BASE=master
 
 mkdir -p /tmp/cquery_cache
 source ~/scripts/kctx.bash
+export COLORSCHEME=gruvbox
+export COLORSCHEME_BG=dark
+export SPACEVIMDIR=/home/sah4ez/.SpaceVim.d/

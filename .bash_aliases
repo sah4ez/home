@@ -1,7 +1,7 @@
 alias plt-stage="ssh sah4ez@${STAGE}"
 alias plt-temp="ssh root@${TMP_REMOTE_WORKSPACE}"
 alias ot-dev="ssh sah4ez@${OT_DEV}"
-alias kc='kubectl'
+#alias kc='kubectl'
 alias osdk='operator-sdk'
 alias kcks='kubectl --namespace=kube-system'
 alias dm="docker-machine"
@@ -26,4 +26,4 @@ alias mongodev="mongo --host ${MONGO_PLT_DEV}"
 alias mongostage="mongo --host ${MONGO_PLT_STG}"
 
 alias jiradm="jira create --project=${ADMIN_SPACE} --browse"
-alias kc="kubectl -n$(cat /tmp/kcns$(tty)/current)" # kcns
+alias kc="kubectl -n$(cat /tmp/kcns$(tty)/current 2> /dev/null )" # kcns

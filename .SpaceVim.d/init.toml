@@ -11,8 +11,9 @@
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
-    colorscheme = "gruvbox"
-    background = "dark"
+	colorscheme = "gruvbox"
+	colorscheme_bg = "dark"
+
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
     guicolors = true
@@ -26,26 +27,26 @@
 
 # Enable autocomplete layer
 [[layers]]
-name = 'autocomplete'
-auto-completion-return-key-behavior = "complete"
-auto-completion-tab-key-behavior = "smart"
+	name = 'autocomplete'
+	auto-completion-return-key-behavior = "complete"
+	auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
-name = 'shell'
-default_position = 'top'
-default_height = 30
+	name = 'shell'
+	default_position = 'top'
+	default_height = 30
 
 [[checkers]]
-name = 'checkers'
+	name = 'checkers'
 [[lang/go]]
-name = 'go'
+	name = 'go'
 [[lang/java]]
-name = 'java'
+	name = 'java'
 [[lang/python]]
-name = 'python'
+	name = 'python'
 [[lang/php]]
-name = 'php'
+	name = 'php'
 [[lang/scala]]
-name = 'scala'
+	name = 'scala'
 [[lang/c]]
-name = 'c'
+	name = 'c'
