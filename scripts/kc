@@ -1,0 +1,14 @@
+#!/bin/bash
+# set KUBECTL_VERSION for loading binary in another VERSION
+
+echo ${KUBECTL_VERSION}
+KC=/usr/local/bin/kubectl${KUBECTL_VERSION}
+namespace=$(cat /tmp/kcns$(tty)/current 2> /dev/null )
+
+if [ "${namespace}" != "" ];
+then
+	${KC} "-n${namespace}" "$@"
+else 
+	${KC} "$@"
+fi
+

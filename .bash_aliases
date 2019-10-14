@@ -26,4 +26,4 @@ alias mongodev="mongo --host ${MONGO_PLT_DEV}"
 alias mongostage="mongo --host ${MONGO_PLT_STG}"
 
 alias jiradm="jira create --project=${ADMIN_SPACE} --browse"
-alias kc="kubectl -n$(cat /tmp/kcns$(tty)/current 2> /dev/null )" # kcns
+alias go13="/usr/local/go1.13/bin/go"

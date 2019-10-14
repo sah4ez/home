@@ -24,8 +24,8 @@ fi
 
 echo "$1" > $dir/current
 
-exist=$(cat ${HOME}/.bash_aliases | grep kcns | wc -l)
-if [ $exist -eq 0 ];
-then
-	echo "alias kc=\"kubectl -n\$(cat /tmp/kcns\$(tty)/current 2> /dev/null )\" # kcns" >> ${HOME}/.bash_aliases
-fi
+# exist=$(cat ${HOME}/.bash_aliases | grep kcns | wc -l)
+# if [ $exist -eq 0 ];
+# then
+	# echo "alias kc=\"kubectl -n\$(cat /tmp/kcns\$(tty)/current 2> /dev/null )\" # kcns" >> ${HOME}/.bash_aliases
+# fi

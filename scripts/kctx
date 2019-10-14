@@ -1,8 +1,23 @@
 #!/bin/bash
 
 base_kubeconfig=${HOME}/.kube/config
-new_context=$1
 
+usage()
+{
+	echo "kctx - util for set up context of kuberntes"
+	echo "kctx <NAMESPACE>"
+	echo "command:"
+	echo " list - list available contexts"
+	echo " help, -h - show help message"
+	exit 0
+}
+
+if [ "$1" == "help" ];
+then
+	usage
+fi
+
+new_context=$1
 if [ "$new_context" == "" ];
 then
 	egrep 'current-context' ${base_kubeconfig}
