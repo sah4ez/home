@@ -6,8 +6,9 @@ alias osdk='operator-sdk'
 alias kcks='kubectl --namespace=kube-system'
 alias dm="docker-machine"
 alias mk="minikube"
-alias wd="cd $HOME/go/src/bitbucket.org/$COMPANY/"
+alias wd="cd $HOME/go/src/${PRIVATE_REPOS3}/"
 alias ffwd="cd $HOME/go/src/${PRIVATE_REPOS}/${COMPANY2}/"
+alias ffwd="cd $HOME/go/src/${PRIVATE_REPOS2}/${COMPANY3}/"
 alias dev-contacts="sh $HOME/$COMPANY.io/autologginer/get_buffer.sh"
 alias branches='for l in $(ls -d msg-* | xargs); do cd $l; printf "%-30s | %-30s\n" "$l" "$(git br | grep \*)" ; cd .. ; done'
 alias tags='for l in $(ls -d msg-* | xargs); do cd $l; printf "%-30s | %-30s\n" "$l" "$(git tag -l  | tail -n 1 )" ; cd .. ; done'
