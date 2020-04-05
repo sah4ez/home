@@ -27,26 +27,50 @@
 
 # Enable autocomplete layer
 [[layers]]
-	name = 'autocomplete'
-	auto-completion-return-key-behavior = "complete"
-	auto-completion-tab-key-behavior = "smart"
+name = 'autocomplete'
+auto-completion-return-key-behavior = "complete"
+auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
-	name = 'shell'
-	default_position = 'top'
-	default_height = 30
+name = 'shell'
+default_position = 'top'
+default_height = 30
 
-[[checkers]]
-	name = 'checkers'
-[[lang/go]]
-	name = 'go'
-[[lang/java]]
-	name = 'java'
-[[lang/python]]
-	name = 'python'
-[[lang/php]]
-	name = 'php'
-[[lang/scala]]
-	name = 'scala'
-[[lang/c]]
-	name = 'c'
+[[layers]]
+name = "lang#python"'
+format_on_save = 1
+python_file_head = [
+        '#! /usr/bin/env python',
+        '# -*- coding: utf-8 -*-',
+                '# vim:fenc=utf-8',
+        '#',
+        '# Copyright © 2020 Alexandr Kozlenkov <sah4ez32@gmail.com>',
+        '#',
+        '# Distributed under terms of the MIT license.',
+        '"""',
+        '"""']
+enable_typeinfo = true
+
+[[layers]]
+name = "lang#csharp"
+highlight_types = 0
+
+[[layers]]
+name = "lang#go"
+
+
+# [[checkers]]
+# 	name = 'checkers'
+# [[lang/go]]
+# 	name = 'go'
+# [[lang/java]]
+# 	name = 'java'
+# [[lang/python]]
+# 	name = 'python'
+# [[lang/php]]
+# 	name = 'php'
+# [[lang/scala]]
+# 	name = 'scala'
+# [[lang/c]]
+# 	name = 'c'
+# 

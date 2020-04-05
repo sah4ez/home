@@ -4,10 +4,10 @@ let g:spacevim_custom_plugins = [
   \ ['leafgarland/typescript-vim', { 'on_ft' : 'typescript' }],
   \ ['pangloss/vim-javascript',    { 'on_ft' : 'js' }],
   \ ['moll/vim-node',              { 'on_ft' : 'js' }],
-  \ ['scrooloose/vim-slumlord',    { 'on_ft' : 'plantuml' }],
   \ ['cespare/vim-toml',           { 'on_ft' : 'toml' }],
   \ ['ensime/ensime-vim',          { 'on_ft' : 'scala' }],
   \ ['derekwyatt/vim-scala',       { 'on_ft' : 'scala' }],
+  \ ['ryanolsonx/vim-lsp-python',  { 'on_ft' : 'python' }],
   \ ['aklt/plantuml-syntax'],
   \ ['airblade/vim-gitgutter'],
   \ ['terryma/vim-multiple-cursors'],
@@ -16,7 +16,6 @@ let g:spacevim_custom_plugins = [
   \ ['tpope/vim-fugitive'],
   \ ['nginx/nginx'],
   \ ['tbastos/vim-lua'],
-  \ ['will133/vim-dirdiff'],
   \ ['dbeniamine/cheat.sh-vim'],
   \ ['sah4ez/vim-bitbucket-comments'],
   \ ['prabirshrestha/async.vim'],
@@ -29,6 +28,18 @@ let g:spacevim_custom_plugins = [
   \ ['justinmk/vim-sneak'],
   \ ['tpope/vim-repeat'],
   \ ['lilydjwg/colorizer'],
+  \ ['whiteinge/diffconflicts'],
+  \ ['l04m33/vlime'],
+  \ ['neovimhaskell/haskell-vim'],
+  \ ['bitc/vim-hdevtools'],
+  \ ['alx741/vim-stylishask'],
+  \ ['nbouscal/vim-stylish-haskell'],
+  \ ['will133/vim-dirdiff'],
+  \ ['tarekbecker/vim-yaml-formatter'],
+  \ ['lambdalisue/vim-pyenv'],
+  \ ['nvie/vim-flake8'],
+  \ ['sah4ez/SQHell.vim'],
+  \ ['vim-syntastic/syntastic'],
   \ ]
 
 let g:spacevim_filemanager = 'nerdtree'
@@ -59,7 +70,7 @@ autocmd VimEnter * nested :set wrap
 let g:spacevim_windows_smartclose = 'Q'
 
 let g:go_def_mode='gopls'
-" let g:go_info_mode='gopls'
+let g:go_info_mode='gopls'
 " golang
 " let g:go_guru_scope = ["..."]
 let g:go_highlight_functions = 1
@@ -82,6 +93,7 @@ let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "5s"
 
 let g:go_auto_sameids = 1
+let g:go_null_module_warning = 1
 
 autocmd BufReadPre *.{go} nnoremap <space>lbr :GoReferrers<CR>
 autocmd BufReadPre *.{go} nnoremap <space>lbi :GoImplements<CR>
@@ -217,3 +229,26 @@ autocmd BufWritePost *.go silent set filetype=none | set filetype=go
 
 set spell spelllang=en_us
 nmap <space>ll :set spell spelllang=en_us,ru<CR>
+
+" haskell
+"
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+let g:haskell_classic_highlighting = 1
+let g:stylishask_on_save = 1
+let g:stylish_haskell_command = 1 
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsInfo<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
+
+if $_ == '/opt/vertica/bin/vsql' 
+	set filetype=sql 
+endif
+
+autocmd BufReadPre *.{py,go,c,cpp,h,java,go,yaml,json,sql,sh} nnoremap  <space>vmk :mkview<CR>
+autocmd BufReadPre *.{py,go,c,cpp,h,java,go,yaml,json,sql,sh} nnoremap  <space>vml :silent loadview<CR>
