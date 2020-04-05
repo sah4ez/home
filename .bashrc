@@ -153,8 +153,10 @@ export PATH=$PATH:/home/sah4ez/go/bin
 export PATH=$PATH:/usr/local/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export GO111MODULE=off
-export LOG_LEVEL=debuglog
+export GO111MODULE=on
+export GOPROXY=""
+export GOPRIVATE="gitlab.com/g.sokol99"
+export LOG_LEVEL=debug
 export BUILD_TAGS=debug
 pdf (){
   evince $1
@@ -164,8 +166,28 @@ pdf (){
 export SDKMAN_DIR="/home/sah4ez/.sdkman"
 [[ -s "/home/sah4ez/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sah4ez/.sdkman/bin/sdkman-init.sh"
 
+
+# get current context 
+parse_current_k8s_context() {
+	CONTEXT=`cat ~/.kube/config | egrep "current-context" | awk -F ': ' '{print $2}' | sed -r 's,",,g'`
+	if [ ! "${CONTEXT}" == "" ]; 
+	then
+		TTY=$(tty)
+		NS=`cat /tmp/kcns${TTY}/current 2> /dev/null`
+		if [ "${NS}" == "" ]; then
+			NS=`echo -en "\e[1;91mNONE\e[m"`
+		else 
+			NS=`echo -en "\e[1;93m${NS}\e[m"`
+		fi
+		echo -en "\e[1;93m[${CONTEXT}\e[m:${NS}\e[1;93m]\e[m"
+	else
+		echo ""
+	fi
+}
+
+
 # get current branch in git repo
-function parse_git_branch() {
+parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 	if [ ! "${BRANCH}" == "" ]
 	then
@@ -177,7 +199,7 @@ function parse_git_branch() {
 }
 
 # get current status of git repo
-function parse_git_dirty {
+parse_git_dirty() {
 	status=`LC_ALL=en_GB git status 2>&1 | tee`
 	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
 	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
@@ -211,7 +233,7 @@ function parse_git_dirty {
 	fi
 }
 
-export PS1="\[\e[1;92m\]\`parse_git_branch\`\[\e[m\]\[\e[1;95m\]\t\[\e[m\]:\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]:\[\e[1;34m\]\w\[\e[m\]\n\\$ "
+export PS1="\`parse_current_k8s_context\`\[\e[1;92m\]\`parse_git_branch\`\[\e[m\]\[\e[1;95m\]\t\[\e[m\]:\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\]:\[\e[1;34m\]\w\[\e[m\]\n\\$ "
 
 # DEV SETTINGS
 
@@ -280,11 +302,25 @@ source ~/scripts/use-ssh-autocomplete
 
 export PATH=$PATH:/opt/kafka/bin
 
-source ~/scripts/git-completion.bash
+#source ~/scripts/git-completion.bash
 export REVIEW_BASE=master
 
 mkdir -p /tmp/cquery_cache
 source ~/scripts/kctx.bash
 export COLORSCHEME=gruvbox
 export COLORSCHEME_BG=dark
-export SPACEVIMDIR=/home/sah4ez/.SpaceVim.d/
+
+export KUBECTL_VERSION=1.15.4
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/sah4ez/.opt/google-cloud-sdk/google-cloud-sdk/path.bash.inc' ]; then . '/home/sah4ez/.opt/google-cloud-sdk/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/sah4ez/.opt/google-cloud-sdk/google-cloud-sdk/completion.bash.inc' ]; then . '/home/sah4ez/.opt/google-cloud-sdk/google-cloud-sdk/completion.bash.inc'; fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export PATH="$PATH:/opt/vertica/bin"
