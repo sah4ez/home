@@ -169,7 +169,7 @@ export SDKMAN_DIR="/home/sah4ez/.sdkman"
 
 # get current context 
 parse_current_k8s_context() {
-	CONTEXT=`cat ~/.kube/config | egrep "current-context" | awk -F ': ' '{print $2}' | sed -r 's,",,g'`
+	CONTEXT=`cat ~/.kube/config | egrep "current-context" | awk -F ': ' '{print $2}' | sed -r 's,",,g' | sed -r "${CLUSTER_NAME_REPLACE}"`
 	if [ ! "${CONTEXT}" == "" ]; 
 	then
 		TTY=$(tty)
@@ -307,6 +307,7 @@ export REVIEW_BASE=master
 
 mkdir -p /tmp/cquery_cache
 source ~/scripts/kctx.bash
+source ~/scripts/kcns.bash
 export COLORSCHEME=gruvbox
 export COLORSCHEME_BG=dark
 
