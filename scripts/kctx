@@ -27,3 +27,27 @@ fi
 sed -i '/current-context/d' ${base_kubeconfig}
 
 echo 'current-context: "'$new_context'"' | tee -a ${base_kubeconfig}
+
+tty_id=$(tty)
+
+dir=$(echo "/tmp/kctx${tty_id}")
+mkdir -p $dir
+
+if [ -f $dir/current ];
+then
+	cp $dir/current $dir/prev
+fi
+
+if [ "$1" == "" ];
+then 
+	cat $dir/current 2> /dev/null
+	exit 0
+fi
+
+if [ "$1" == "-" ];
+then
+	mv $dir/prev $dir/current
+	exit 0
+fi
+
+echo "$1" > $dir/current

@@ -4,11 +4,20 @@
 echo ${KUBECTL_VERSION}
 KC=/usr/local/bin/kubectl${KUBECTL_VERSION}
 namespace=$(cat /tmp/kcns$(tty)/current 2> /dev/null )
+cluster=$(cat /tmp/kctx$(tty)/current 2> /dev/null )
 
-if [ "${namespace}" != "" ];
-then
-	${KC} "-n${namespace}" "$@"
+if test ${USE_CONFIG_JSON+x}; then
+	if [ "${namespace}" != "" ];
+	then
+		${KC} --kubeconfig "$(extract-k8s-ns $cluster $namespace)" "$@"
+	else 
+		${KC} "$@"
+	fi
 else 
-	${KC} "$@"
+	if [ "${namespace}" != "" ];
+	then
+		${KC} "-n${namespace}" "$@"
+	else 
+		${KC} "$@"
+	fi
 fi
-

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+context() {
+	cat << EOF
+apiVersion: v1
+clusters:
+- name: cluster
+  cluster:
+    server: $1
+    insecure-skip-tls-verify: true
+contexts:
+- name: context
+  context:
+    user: user
+    cluster: cluster
+    namespace: $2
+kind: Config
+preferences: {}
+users:
+- name: user
+  user:
+    token: $3
+current-context: "context"
+EOF
+}
+
+PATH_TO_CONFIGS="${HOME}/.kube/clusters.json"
+
+cluster=$1
+namespace=$2
+
+k8s_context=$(cat clusters.json | jq ' .[] | select( .cluster == "'$1'" and .namespace == "'$namespace'" )')
+
+if [ "$k8s_context" == "" ];
+then
+	exit 2
+fi
+
+get_server() {
+	echo ${@} | jq -r '.server'
+}
+
+get_namespace() {
+	echo ${@} | jq -r '.namespace'
+}
+
+get_token() {
+	echo ${@} | jq -r '.token'
+}
+
+get_cluster() {
+	echo ${@} | jq -r '.cluster'
+}
+
+file_name=${HOME}/.kube/$(get_cluster ${k8s_context})_$(get_namespace ${k8s_context})
+
+context $(get_server ${k8s_context}) $(get_namespace ${k8s_context}) $(get_token ${k8s_context}) > $file_name
+
+echo -n $file_name
